@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Property Calculator</title>
+		<meta name="author" content="Alex" />
+		<!-- Date: 2015-03-19 -->
+	</head>
+	<body>
+		<script type="text/javascript">
+		///FILE: PropertyCalculator.html
+		///PROG: Alex Mandigo
+		///PURP: Calculate amount and cost of sod needed for various properties
+		
+		var pie = 3.14;
+		var radiusDivider = 2;
+		var pondMaxMultiplier = .85;
+		var sodPrice = 1.39;
+		var firstName = "";
+		var propLength = 0.0;
+		var propWidth = 0.0;
+		var homeLength = 0.0;
+		var homeWidth = 0.0;
+		var pondDiamMax = 0.0;
+		var pondDiameter = 0.0;
+		var pondDepth = 0.0;
+		var propSqFt = 0.0;
+		var homeSqFt = 0.0;
+		var pondSqFt = 0.0;
+		var sodDeduct = 0.0;
+		var sodSqFt = 0.0;
+		var sodCost = 0.00;
+		
+		///Inputs
+		firstName = prompt("Welcome to the Property Calculator. What's your name?","");
+		propLength = prompt("To start with, " + firstName + ", what is the length of your property in feet?","0.0");
+		propWidth = prompt("Alright, " + firstName + ", and what is the width of your property in feet?","0.0");
+		homeLength = prompt("Ok, " + firstName + ", what is the length of the house?","0.0");
+		homeWidth = prompt("Excellent, " + firstName + ", and what is the width of the house?","0.0");
+		
+		///Conversion
+		propWidth = parseFloat(propWidth);
+		
+		///Calculation
+		pondDiamMax = propWidth * pondMaxMultiplier;
+		
+		///Inputs(continued)
+		pondDiameter = prompt("How big (in feet) would you like the water feature? Please note: the maximum size allowed on your property is " + pondDiamMax + " ft.","0.0");
+		pondDepth = prompt("How deep (in feet) would you like the water feature?","0.0");
+		
+		///Conversions(continued)
+		propLength = parseFloat(propLength);
+		homeLength = parseFloat(homeLength);
+		homeWidth = parseFloat(homeWidth);
+		pondDiameter = parseFloat(pondDiameter);
+		
+		///Calculations(continued)
+		propSqFt = propLength * propWidth;
+		homeSqFt = homeLength * homeWidth;
+		radius = pondDiameter / radiusDivider;
+		radiusSq = radius * radius;
+		pondSqFt = pie * radiusSq;
+		sodDeduct = homeSqFt + pondSqFt;
+		sodSqFt = propSqFt - sodDeduct;
+		sodCost = sodSqFt * sodPrice;
+		
+		///Outputs
+		document.write("Alright, " + firstName + ", so these are the dimensions you've given me.<br>");
+		document.write("Property Length = " + propLength + " ft. <br>Property Width = " + propWidth + " ft.<br>");
+		document.write("House length = " + homeLength + " ft. <br>House width = " + homeWidth + " ft.<br>");
+		document.write("Maximum diameter of water feature allowed = " + pondDiamMax + " ft. <br>Size of water feature selected = " + pondDiameter + " ft. <br>Depth of water feature = " + pondDepth + " ft.<br>");
+		document.write("Based on these inputs, I was able to make some calculations.<br>");
+		document.write("The property size is " + propSqFt + " square ft.<br>");
+		document.write("The house size is " + homeSqFt + " square  ft.<br>");
+		document.write("The water feature takes up about " + pondSqFt + " square  ft.<br>");
+		document.write("So the amount of sod you would need should be " + sodSqFt + " square ft. and the cost of that should be $" + sodCost + "<br>");
+		document.write("Thank you for using the Property Calculator!");
+		
+		///END PROGRAM
+		</script>
+	</body>
+</html>
+
